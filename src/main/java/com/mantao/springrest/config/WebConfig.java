@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Manito on 2019/3/7.
  */
 @Configuration
-public class WebMvcConfigurer extends WebMvcConfigurationSupport {
+public class WebConfig extends WebMvcConfigurationSupport {
 
     // 使用 Fastjson 提供的FastJsonHttpMessageConverter 来替换 Spring MVC 默认的 HttpMessageConverter
     // 以提高 @RestController @ResponseBody @RequestBody 注解的 JSON序列化速度

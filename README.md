@@ -3,17 +3,17 @@
 
 
 
-## Prerequisite
+## Prerequisites
 
-1. IntellJ iDEA community
-2. Java 8
+1. IDE - IntellJ iDEA community
+2. JDK 8+
 3. Spring Boot [v2.1.3](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/)
 
 4. [lombok](https://projectlombok.org/setup/maven)
 
    > **Never write `public int getFoo() {return foo;}` again.**
 
-## Project structure
+## Folder structure
 
 ```
 ├── com.mantao.springrest
@@ -99,15 +99,102 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 ### [Externalized Configuration](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/#boot-features-external-config)
 
 > 配置相关的设置
+>
+> You also need to list the properties classes to register in the `@EnableConfigurationProperties` annotation, as shown in the following example:
+
+1. @ConfigurationProperties vs @Value
+
+   > 从配置文件中读取属性
+   >
+   > 下面示例匹配***file.upload-dir | file.upload_dir | file.uploadDir | FILE_UPLOAD_DIR***属性（**Relaxed Binding**）
+   >
+   > `ConfigurationProperties`不支持SpEL，支持**Relaxed Binding**和**[Meta-data Support](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/#configuration-metadata-format)**
+   >
+   > `@Value`支持SpEL
+
+   ```java
+   @ConfigurationProperties(prefix = "file")
+   public class FileStorageProperties {
+   
+       private String uploadDir;
+   
+       public String getUploadDir() {
+           return uploadDir;
+       }
+   
+       public void setUploadDir(String uploadDir) {
+           this.uploadDir = uploadDir;
+       }
+   }
+   
+   @Component
+   public class MyBean {
+   
+       @Value("${name}")
+       private String name;
+   
+       // ...
+   
+   }
+   ```
+
+2. @EnableConfigurationProperties
+
+   > 将配置类注册为Bean; Bean名称为*file-com.XX.FileStorageProperties*
+   >
+   > Need to list the properties classes to register in the `@EnableConfigurationProperties` annotation，and the bean has a conventional name: `<prefix>-<fqn>` where `<prefix>` is the environment key prefix specified in the `@ConfigurationProperties` annotation and `<fqn>` is the fully qualified name of the bean. 
+
+   ```java
+   
+   @Configuration
+   @EnableConfigurationProperties(FileStorageProperties.class)
+   public class MyConfiguration {
+   }
+   
+   ```
+
+   
+
+## 异常处理
+
+> 使用`@ExceptionHandler ` `@ControllerAdvice`全局处理异常
+>
+> The*@ControllerAdvice* annotation allows us to **consolidate our multiple, scattered @ExceptionHandlers from before into a single, global error handling component**.
+
+
+
+## Security
+
+
+
+## Testing
 
 
 
 
 
-## 其他
 
-1. [META-INF](https://stackoverflow.com/questions/70216/whats-the-purpose-of-meta-inf)
 
-   > 
+## Spring Features
 
-2. 
+### AOP
+
+
+
+### The Spring Expression Language(SpEL)
+
+> A powerful expression language that supports querying and manipulating an object graph at runtime.
+>
+> `${...}` is the property placeholder syntax. It can only be used to dereference properties.
+>
+> `#{...}` is [SpEL syntax](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html), which is far more capable and complex. It can also handle property placeholders, and a lot more besides.
+
+
+
+
+
+### Events and Listners
+
+
+
+### Reactive Paradigm From Spring 5
