@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-1. IDE - IntellJ iDEA community
+1. dIDE - IntellJ iDEA community
 2. JDK 8+
 3. Spring Boot [v2.1.3](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/)
 
