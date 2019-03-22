@@ -5,13 +5,19 @@
 
 ## Prerequisites
 
-1. dIDE - IntellJ iDEA community
+1. IDE - IntelliJ IDEA community Editor
 2. JDK 8+
 3. Spring Boot [v2.1.3](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/)
 
 4. [lombok](https://projectlombok.org/setup/maven)
 
    > **Never write `public int getFoo() {return foo;}` again.**
+   >
+   > 需另外安装IntelliJ IDEA插件
+
+5. [Spring Assistant](<https://plugins.jetbrains.com/plugin/10229-spring-assistant>)
+
+   > IntelliJ IDEA插件；提供spring 配置提示信息
 
 ## Folder structure
 
@@ -99,10 +105,32 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 ### AOP
 
 ```xml
-
+<!-- AOP -->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
 ```
 
 
+
+#### Aspest
+
+> An aspect is a modularization of a concern（模块化关注点） that cuts across multiple classess.
+
+#### Joinpoint
+
+> A Joinpoint is a point during the execution of a program, such as exection of a method or the handling of an exception.
+>
+> **In Spring AOP, a Joinpoint always represents a method execution**
+
+#### Pointcut
+
+> A Pointcut is a predicate that helps match an Advice to be aplliled by an Aspect at a particular Joinpoint.
+
+#### Advice
+
+> An Advice is an action taken by an aspect at a particular Joinpoint.
 
 ### [请求日志记录](https://www.baeldung.com/spring-http-logging)
 
@@ -179,6 +207,34 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
 
 
+## 数据库
+
+### [Druid](<https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter>)
+
+> 支持多数据源配置
+
+```xml
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+   <groupId>com.alibaba</groupId>
+   <artifactId>druid-spring-boot-starter</artifactId>
+   <version>1.1.10</version>
+</dependency>
+
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+</dependency>
+```
+
+#### [监控](<https://github.com/alibaba/druid/wiki/%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E9%85%8D%E7%BD%AE%E7%9B%91%E6%8E%A7>)
+
+
+
 ## Testing
 
 
@@ -189,7 +245,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
 ## Spring Features
 
-### AOP
+### 
 
 
 

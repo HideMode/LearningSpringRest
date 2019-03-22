@@ -1,0 +1,13 @@
+# configuration file
+server:
+  port: 8080
+
+
+# Druid JDBC configuration
+spring:
+  datasource:
+    druid:
+      url: "jdbc:mysql://127.0.0.1:3306/springrest?characterEncoding=utf8&useSSL=false&autoReconnect=true"
+      username: root
+      password: Acxiom123
+      driver-class-name: com.mysql.cj.jdbc.Driver
