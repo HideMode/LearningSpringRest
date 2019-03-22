@@ -96,6 +96,18 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
 
 
+### AOP
+
+```xml
+
+```
+
+
+
+### [请求日志记录](https://www.baeldung.com/spring-http-logging)
+
+
+
 ### [Externalized Configuration](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/#boot-features-external-config)
 
 > 配置相关的设置

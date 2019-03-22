@@ -2,7 +2,7 @@ package com.mantao.springrest.controller.fastjson;
 
 import com.mantao.springrest.entity.fastjson.Person;
 import com.mantao.springrest.service.lifecycle.LifeCycleCallback;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +13,8 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping(value = "fastjson")
-@Log4j2
-public class FastJsonTry {
+@Slf4j
+public class FastJsonTryController {
 
     @Autowired
     LifeCycleCallback lifeCycleCallback;
@@ -26,7 +26,7 @@ public class FastJsonTry {
         person.setAge(age);
         person.setFullName("Manito Tao");
         person.setDateOfBirth(new Date());
-
+        log.info("person: {}", person);
         return person;
     }
 

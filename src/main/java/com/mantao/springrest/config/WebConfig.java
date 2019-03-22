@@ -1,8 +1,11 @@
 package com.mantao.springrest.config;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.mantao.springrest.interceptor.RequestInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -13,6 +16,9 @@ import java.util.List;
  */
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
+
+    @Autowired
+    RequestInterceptor requestInterceptor;
 
     // 使用 Fastjson 提供的FastJsonHttpMessageConverter 来替换 Spring MVC 默认的 HttpMessageConverter
     // 以提高 @RestController @ResponseBody @RequestBody 注解的 JSON序列化速度
@@ -31,5 +37,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        registry.addInterceptor(requestInterceptor);
     }
 }
