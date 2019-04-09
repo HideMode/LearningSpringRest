@@ -9,15 +9,16 @@
 2. JDK 8+
 3. Spring Boot [v2.1.3](https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/)
 
-4. [lombok](https://projectlombok.org/setup/maven)
+4. [lombok Plugin](https://projectlombok.org/setup/maven)
 
    > **Never write `public int getFoo() {return foo;}` again.**
    >
    > 需另外安装IntelliJ IDEA插件
 
-5. [Spring Assistant](<https://plugins.jetbrains.com/plugin/10229-spring-assistant>)
+5. [Spring Assistant Plugin](https://plugins.jetbrains.com/plugin/10229-spring-assistant)
 
    > IntelliJ IDEA插件；提供spring 配置提示信息
+6. [Free Mybatis Plugin](https://github.com/rockjava/intellij-mybatis-plugin)
 
 ## Folder structure
 
